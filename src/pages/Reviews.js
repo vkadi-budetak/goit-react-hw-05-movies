@@ -16,7 +16,7 @@ export default function Reviews() {
       .then(response => response.json())
       .then(response => setReviews(response.results))
       .catch(err => console.error(err));
-  }, []);
+  }, [movieId]);
 
   return reviews.length ? (
     <ul>

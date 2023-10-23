@@ -16,7 +16,7 @@ export default function CastPage() {
       .then(response => response.json())
       .then(response => setCast(response.cast))
       .catch(err => console.error(err));
-  }, []);
+  }, [movieId]);
 
   console.log(cast);
 

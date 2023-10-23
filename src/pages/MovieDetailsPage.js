@@ -33,7 +33,7 @@ export default function MovieDetailsPage() {
         console.log(response);
       })
       .catch(err => console.error(err));
-  }, []);
+  }, [movieId]);
 
   return (
     <div>
