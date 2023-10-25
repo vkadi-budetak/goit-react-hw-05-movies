@@ -8,6 +8,8 @@ import {
   useParams,
 } from 'react-router-dom';
 
+import { ReactComponent as IMGPlaceHolder } from '../assets/photo.svg';
+
 import { optionsGet } from 'util/apiOptions';
 
 import Loader from 'components/Loader';
@@ -42,20 +44,27 @@ export default function MovieDetailsPage() {
       </Link>
       {movie !== null && (
         <div className="styledMovie">
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={movie.title}
-          />
+          {movie.poster_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+            />
+          ) : (
+            <IMGPlaceHolder className="imgPlaceHolder" />
+          )}
+
           <div className="styledMovieList">
             <h1>{movie.title}</h1>
             <p>User Score: {movie.popularity.toFixed()}%</p>
             <h2>Overview</h2>
-            <p>{movie.overview}</p>
+            <p>{movie.overview || 'Missing information'}</p>
             <ul>
               <h3>Genres</h3>
-              {movie.genres.map(el => (
-                <li key={el.id}>{el.name}</li>
-              ))}
+              {movie.genres.length ? (
+                movie.genres.map(el => <li key={el.id}>{el.name}</li>)
+              ) : (
+                <span>Missing information</span>
+              )}
             </ul>
           </div>
         </div>

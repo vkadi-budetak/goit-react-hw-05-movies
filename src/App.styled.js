@@ -53,4 +53,10 @@ export const StyledAppContainer = styled.div`
     flex-direction: column;
     margin-left: 30px;
   }
+
+  .imgPlaceHolder {
+    height: auto;
+    width: 400px;
+    max-width: 100%;
+  }
 `;

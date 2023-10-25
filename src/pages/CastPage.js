@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { optionsGet } from 'util/apiOptions';
 
-import { useParams } from 'react-router-dom';
+import { ReactComponent as IMGPlaceHolder } from '../assets/photo.svg';
+
 
 export default function CastPage() {
   const { movieId } = useParams();
@@ -24,18 +26,18 @@ export default function CastPage() {
     <ul>
       {cast.map(el => (
         <li key={el.id}>
-          {el.profile_path && (
+          {el.profile_path ? (
             <img
               src={`https://image.tmdb.org/t/p/w500/${el.profile_path}`}
               alt={el.name}
             />
-          )}
+          ): (<IMGPlaceHolder/>)}
           <p>{el.name}</p>
-          <p>Character: {el.character}</p>
+          {el.character && <p>Character: {el.character}</p>}
         </li>
       ))}
     </ul>
   ) : (
-    false
+    <p>Nothing found in Cast</p>
   );
 }

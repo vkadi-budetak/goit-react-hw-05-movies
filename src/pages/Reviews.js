@@ -28,6 +28,6 @@ export default function Reviews() {
       ))}
     </ul>
   ) : (
-    false
+    <p>Nothing found in Reviews</p>
   );
 }
