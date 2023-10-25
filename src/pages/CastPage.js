@@ -5,7 +5,6 @@ import { optionsGet } from 'util/apiOptions';
 
 import { ReactComponent as IMGPlaceHolder } from '../assets/photo.svg';
 
-
 export default function CastPage() {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
@@ -31,7 +30,9 @@ export default function CastPage() {
               src={`https://image.tmdb.org/t/p/w500/${el.profile_path}`}
               alt={el.name}
             />
-          ): (<IMGPlaceHolder/>)}
+          ) : (
+            <IMGPlaceHolder />
+          )}
           <p>{el.name}</p>
           {el.character && <p>Character: {el.character}</p>}
         </li>
